@@ -1,14 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
-import time
 
 # PSO functions
-from PSO import initialize_particles, update_velocity, update_position, plot_particles
+# ...
 
 # ACO functions
-from ACO import initialize_pheromones, plot_graph, calculate_probabilities, select_next_node, \
-    calculate_delta_pheromones, update_pheromones
+# ...
 
 def hybrid_optimizer(objective_function, graph, num_particles, num_dimensions, search_space,
                      num_ants, alpha, beta, evaporation_rate, num_iterations, cognitive_param, social_param, inertia_weight, show_animation=False):
@@ -77,23 +75,6 @@ def hybrid_optimizer(objective_function, graph, num_particles, num_dimensions, s
             update(None)
 
     return global_best, objective_function(global_best)
-def objective_function(x):
-    # Replace this with your actual objective function
-    return x[0]**2 + x[1]**2 
-graph = [
-    [0, 1, 1, 0, 0],
-    [1, 0, 1, 1, 1],
-    [1, 1, 0, 0, 1],
-    [0, 1, 0, 0, 1],
-    [0, 1, 1, 1, 0]
-]
-
-def measure_performance(objective_function, *args, **kwargs):
-    start_time = time.time()
-    best_solution, best_value = hybrid_optimizer(objective_function, *args, **kwargs)
-    end_time = time.time()
-    execution_time = end_time - start_time
-    return best_solution, best_value, execution_time
 
 # Example Usage:
 num_particles = 30
@@ -108,10 +89,8 @@ cognitive_param = 1.5
 social_param = 1.5
 inertia_weight = 0.7
 
-# Using measure_performance function
-best_solution, best_value, execution_time = measure_performance(objective_function, graph, num_particles, num_dimensions, search_space,
+best_solution, best_value = hybrid_optimizer(objective_function, graph, num_particles, num_dimensions, search_space,
                                             num_ants, alpha, beta, evaporation_rate, num_iterations, cognitive_param, social_param, inertia_weight, show_animation=True)
 
 print("Best Solution:", best_solution)
 print("Best Value:", best_value)
-print("Execution Time:", execution_time, "seconds")

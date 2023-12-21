@@ -112,3 +112,27 @@ best_path, best_path_cost = aco_optimizer(graph, num_ants, alpha, beta, evaporat
 
 print("Best Path:", best_path)
 print("Best Path Cost:", best_path_cost)
+[11:06 am, 04/12/2023] Sivani Maddepalli: import time
+
+def measure_aco_performance(graph, *args, **kwargs):
+    start_time = time.time()
+    best_path, best_path_cost = aco_optimizer(graph, *args, **kwargs)
+    end_time = time.time()
+    execution_time = end_time - start_time
+    return best_path, best_path_cost, execution_time
+
+# Example Usage for ACO:
+num_nodes = 5
+graph_aco = np.random.rand(num_nodes, num_nodes)  # Replace with your graph or distance matrix
+num_ants_aco = 5
+alpha_aco = 1.0
+beta_aco = 2.0
+evaporation_rate_aco = 0.5
+num_iterations_aco = 50
+
+best_path_aco, best_path_cost_aco, execution_time_aco = measure_aco_performance(graph_aco, num_ants_aco, alpha_aco, beta_aco,
+                                                                                 evaporation_rate_aco, num_iterations_aco)
+
+print("Best Path (ACO):", best_path_aco)
+print("Best Path Cost (ACO):", best_path_cost_aco)
+print("Execution Time (ACO):", execution_time_aco, "seconds")
